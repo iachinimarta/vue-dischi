@@ -1,11 +1,12 @@
 <template>
   <div class="card-container">
-        <div class="wrapper">
+        <a href="#" class="wrapper">
             <img :src="cardsList.poster" :alt="cardsList.name">
             <h5 class="title">{{cardsList.title.toUpperCase()}}</h5>
-            <h6>{{cardsList.author}}</h6>
+            <h6>
+                {{cardsList.author}}</h6>
             <h6>{{cardsList.year}}</h6>
-        </div>
+        </a>
     </div>
 </template>
 
@@ -14,8 +15,9 @@
         name: 'MySingleCard',
         props: {
             cardsList: Object
-        }
+        },
     }
+    
 </script>
 
 <style lang="scss">
@@ -28,6 +30,7 @@
         .wrapper {
             padding: 10px;
             text-align: center;
+            display: inline-block;
 
             img {
                 width: 100%;

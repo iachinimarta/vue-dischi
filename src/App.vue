@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <MyHeader/>
-    <MyCards/>
+    <MyCards @eccoIGeneri="prendoIGeneri"/>
   </div>
 </template>
 
@@ -15,6 +15,17 @@ export default {
   components: {
     MyHeader,
     MyCards
+  },
+  data() {
+    return {
+      generiOttenutiDaCards: []
+    }
+  },
+  methods: {
+    prendoIGeneri(generiDaMyCards) {
+      this.generiOttenutiDaCards = generiDaMyCards;
+      console.log('generiOttenutiDaCards = ' + this.generiOttenutiDaCards)
+    }
   }
 }
 </script>

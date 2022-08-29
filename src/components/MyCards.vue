@@ -1,8 +1,11 @@
 <template>
-    <div>
+    <div>       
         <div class="card-wrapper d-flex">
             <MySingleCard v-for="(card, index) in cardsList" :key="index" :cardsList="card"/>         
-        </div>    
+        </div>
+
+        <button @click="generiOttenuti">Prova</button>
+        <button @click="$emit('eccoIGeneri', generiDaMyCards)">prova due</button>
     </div>
 </template>
 
@@ -17,16 +20,23 @@
         },
         data() {
             return {
+                generiDaMyCards: [],
                 cardsList: [],
-                endpoint: 'https://flynn.boolean.careers/exercises/api/array/music'
+                endpoint: 'https://flynn.boolean.careers/exercises/api/array/music',
             }
         },
         created() {
            axios.get(this.endpoint)
             .then(reply => {
                 this.cardsList = reply.data.response;
-                console.log(reply.data.response)
+                console.log(reply.data.response);           
             })
+        },
+        methods: {
+            generiOttenuti() {
+                this.generiDaMyCards = this.cardsList.map(obj => obj.genre);
+                console.log('generiDaMyCards = ' + this.generiDaMyCards);
+            }
         }
     }
 </script>
