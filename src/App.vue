@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import MyHeader from './components/MyHeader.vue'
-import MyCards from './components/MyCards.vue'
+import MyHeader from './components/MyHeader.vue';
+import MyCards from './components/MyCards.vue';
 
 
 export default {
@@ -20,5 +20,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import './components/common.scss'
+  @import './components/common.scss';
 </style>
