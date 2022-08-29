@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div>
-            <MySingleCard v-for="(card, index) in cardsList" :key="index"/>         
+        <div class="card-wrapper d-flex">
+            <MySingleCard v-for="(card, index) in cardsList" :key="index" :cardsList="card"/>         
         </div>    
     </div>
 </template>
@@ -17,7 +17,7 @@
         },
         data() {
             return {
-                cardsList: '',
+                cardsList: [],
                 endpoint: 'https://flynn.boolean.careers/exercises/api/array/music'
             }
         },
@@ -31,6 +31,15 @@
     }
 </script>
 
-<style>
+<style lang="scss">
+    @import 'common.scss';
+
+    .card-wrapper {
+        width: 70%;
+        margin: auto;
+        flex-wrap: wrap;
+        padding: 50px;
+    }
+
 
 </style>

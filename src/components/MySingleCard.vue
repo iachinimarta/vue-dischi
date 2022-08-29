@@ -1,6 +1,12 @@
 <template>
-  <div>   
-  </div>
+  <div class="card-container">
+        <div class="wrapper">
+            <img :src="cardsList.poster" :alt="cardsList.name">
+            <h5 class="title">{{cardsList.title.toUpperCase()}}</h5>
+            <h6>{{cardsList.author}}</h6>
+            <h6>{{cardsList.year}}</h6>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -14,16 +20,28 @@
 
 <style lang="scss">
    .card-container {
-    width: 80px;
-    height: 80px;
+        display: inline-block;
+        width: calc(100% / 5 - 20px);
+        background-color: #2E3A46;
+        margin: 10px;
 
-        img {
-            width: 100%;
-        }
+        .wrapper {
+            padding: 10px;
+            text-align: center;
 
-        h4 {
-            color: blck;
+            img {
+                width: 100%;
+            }
+
+            .title {
+                color: white;
+                margin-bottom: 10px;
+            }
+
+            h6 {
+                color: grey;
+            }
         }
-   }
+    }
 
 </style>
