@@ -1,20 +1,18 @@
 <template>
     <header>
         <img src="../assets/logo.svg" alt="Spotify">
-        <MySelect/>
-        
+        <select class="select-genres" name="genres" id="genres">
+            <option v-for="(genere, index) in generiOttenutiDaCards" :key="index" :value="genere">{{genere}}</option>
+        </select>        
     </header> 
 </template>
 
 <script>
-    import MySelect from './MySelect.vue';
-
-
     export default {
         name: 'MyHeader',
-        components: {
-            MySelect
-        },
+        props: {
+            generiOttenutiDaCards: Array
+        }
     }
 </script>
 
@@ -26,6 +24,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        .select-genres {
+            margin-right: 10px;
+        }
 
         img {
             width: 150px;

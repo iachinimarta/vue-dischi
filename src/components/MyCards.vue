@@ -3,9 +3,6 @@
         <div class="card-wrapper d-flex">
             <MySingleCard v-for="(card, index) in cardsList" :key="index" :cardsList="card"/>         
         </div>
-
-        <button @click="generiOttenuti">Prova</button>
-        <button @click="$emit('eccoIGeneri', generiDaMyCards)">prova due</button>
     </div>
 </template>
 
@@ -29,14 +26,16 @@
            axios.get(this.endpoint)
             .then(reply => {
                 this.cardsList = reply.data.response;
-                console.log(reply.data.response);           
-            })
-        },
-        methods: {
-            generiOttenuti() {
-                this.generiDaMyCards = this.cardsList.map(obj => obj.genre);
-                console.log('generiDaMyCards = ' + this.generiDaMyCards);
-            }
+                console.log(reply.data.response);
+
+                this.cardsList.forEach(obj => {
+                    if(!this.generiDaMyCards.includes(obj.genre)) {
+                        this.generiDaMyCards.push(obj.genre);
+                    }                   
+                });
+
+                this.$emit('eccoIGeneri', this.generiDaMyCards);
+            });
         }
     }
 </script>

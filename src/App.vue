@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <MyHeader/>
+    <MyHeader :generiOttenutiDaCards="generiOttenutiDaCards"/>
     <MyCards @eccoIGeneri="prendoIGeneri"/>
   </div>
 </template>
