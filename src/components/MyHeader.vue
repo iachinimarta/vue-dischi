@@ -1,7 +1,8 @@
 <template>
     <header>
         <img src="../assets/logo.svg" alt="Spotify">
-        <select class="select-genres" name="genres" id="genres">
+        <select class="select-genres" name="genres" id="genres" @change="$emit('valoriCambiati', newValue)" v-model="newValue">
+            <option value="default">Seleziona un genere</option>
             <option v-for="(genere, index) in generiOttenutiDaCards" :key="index" :value="genere">{{genere}}</option>
         </select>        
     </header> 
@@ -12,6 +13,11 @@
         name: 'MyHeader',
         props: {
             generiOttenutiDaCards: Array
+        },
+        data() {
+            return {
+                newValue: 'default'
+            }
         }
     }
 </script>

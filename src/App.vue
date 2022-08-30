@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <MyHeader :generiOttenutiDaCards="generiOttenutiDaCards"/>
-    <MyCards @eccoIGeneri="prendoIGeneri"/>
+    <MyHeader :generiOttenutiDaCards="generiOttenutiDaCards" @valoriCambiati="prendoIlValore"/>
+    <MyCards @eccoIGeneri="prendoIGeneri" :valueOttenuto="valueOttenuto"/>
   </div>
 </template>
 
@@ -18,13 +18,16 @@ export default {
   },
   data() {
     return {
-      generiOttenutiDaCards: []
+      generiOttenutiDaCards: [],
+      valueOttenuto: ''
     }
   },
   methods: {
     prendoIGeneri(generiDaMyCards) {
       this.generiOttenutiDaCards = generiDaMyCards;
-      console.log('generiOttenutiDaCards = ' + this.generiOttenutiDaCards)
+    },
+    prendoIlValore(newValue) {
+      this.valueOttenuto = newValue;
     }
   }
 }

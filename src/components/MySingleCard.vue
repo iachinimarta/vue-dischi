@@ -3,8 +3,7 @@
         <a href="#" class="wrapper">
             <img :src="cardsList.poster" :alt="cardsList.name">
             <h5 class="title">{{cardsList.title.toUpperCase()}}</h5>
-            <h6>
-                {{cardsList.author}}</h6>
+            <h6>{{cardsList.author}}</h6>
             <h6>{{cardsList.year}}</h6>
         </a>
     </div>
@@ -26,6 +25,10 @@
         width: calc(100% / 5 - 20px);
         background-color: #2E3A46;
         margin: 10px;
+
+        a {
+            text-decoration: none;
+        }
 
         .wrapper {
             padding: 10px;

@@ -1,7 +1,7 @@
 <template>
     <div>       
         <div class="card-wrapper d-flex">
-            <MySingleCard v-for="(card, index) in cardsList" :key="index" :cardsList="card"/>         
+            <MySingleCard v-for="(card, index) in filteredCard" :key="index" :cardsList="card"/>         
         </div>
     </div>
 </template>
@@ -15,6 +15,9 @@
         components: {
             MySingleCard
         },
+        props: {
+            valueOttenuto: String
+        },
         data() {
             return {
                 generiDaMyCards: [],
@@ -26,8 +29,8 @@
            axios.get(this.endpoint)
             .then(reply => {
                 this.cardsList = reply.data.response;
-                console.log(reply.data.response);
 
+                //potevo scrivere direttamente qui
                 this.cardsList.forEach(obj => {
                     if(!this.generiDaMyCards.includes(obj.genre)) {
                         this.generiDaMyCards.push(obj.genre);
@@ -35,9 +38,28 @@
                 });
 
                 this.$emit('eccoIGeneri', this.generiDaMyCards);
+            })
+            .catch((err) => {
+                console.log(err);
             });
+        },
+        computed: {
+            filteredCard() {
+                if (this.valueOttenuto == '' || this.valueOttenuto == 'default') {
+                    return this.cardsList;
+                } else {
+                    let nuovaLista = this.cardsList.filter(card => {
+                        if (card.genre == this.valueOttenuto) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    });
+                    return nuovaLista;
+                }
+            }
         }
-    }
+    };
 </script>
 
 <style lang="scss">
@@ -49,6 +71,4 @@
         flex-wrap: wrap;
         padding: 50px;
     }
-
-
 </style>
